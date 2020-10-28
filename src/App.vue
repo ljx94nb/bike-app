@@ -1,30 +1,31 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <router-view />
+  <van-tabbar v-model="active">
+    <van-tabbar-item replace to="/home">
+      <van-icon name="location-o" size="36" />
+    </van-tabbar-item>
+    <van-tabbar-item replace to="/about">
+      <van-icon name="eye-o" size="36" />
+    </van-tabbar-item>
+    <van-tabbar-item replace to="/about">
+      <van-icon name="user-circle-o" size="36" />
+    </van-tabbar-item>
+  </van-tabbar>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { ref, defineComponent } from 'vue';
 
-#nav {
-  padding: 30px;
+export default defineComponent({
+  name: 'App',
+  setup() {
+    const active = ref<number>(0);
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    return {
+      active
+    };
   }
-}
-</style>
+});
+</script>
+
+<style lang="scss"></style>
